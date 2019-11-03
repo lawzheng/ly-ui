@@ -1,0 +1,208 @@
+@import './common.less';
+
+/* css reset
+--------------------------------------------------------------------------------*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    vertical-align:baseline;
+    background:transparent;
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+    // -webkit-touch-callout:none;
+    // -webkit-user-select:none;
+    // -khtml-user-select:none;
+    // -moz-user-select:none;
+    // -ms-user-select:none;
+    // user-select:none;
+}
+
+body {
+    line-height:1;
+}
+
+button {
+    display: block;
+    border: none;
+    &:focus {
+        outline: none;
+    }
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary {
+    display:block;
+}
+
+ul, ol {
+    list-style:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    text-decoration: none;
+    background:transparent;
+}
+
+input:focus, textarea:focus {
+    outline: 0;
+}
+
+/* 通用类
+--------------------------------------------------------------------------------*/
+._clearfix {
+    zoom: 1;
+}
+._clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+._ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+._abs {
+    position: absolute;
+}
+._rel {
+    position: relative;
+}
+._left {
+    float: left;
+}
+._right {
+    float: right;
+}
+._width20 {
+    width: 20%;
+}
+._width25 {
+    width: 25%;
+}
+._width33 {
+    width: 33.333333%;
+}
+._width50 {
+    width: 50%;
+}
+._width67 {
+    width: 66.666667%;
+}
+._width75 {
+    width: 75%;
+}
+._width100 {
+    width: 100%;
+}
+._height100 {
+    height: 100%;
+}
+._txt-left {
+    text-align: left;
+}
+._txt-center {
+    text-align: center;
+}
+._txt-right {
+    text-align: right;
+}
+._flex-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    flex-direction: column;
+}
+._flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+._flex-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 0;
+}
+._flex-item2 {
+    -webkit-box-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    width: 0;
+}
+._border-radius50, .radius50 {
+    border-radius: 50%;
+}
+._ellipsis2 {
+    // word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+._ellipsis3 {
+    // word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+._bg-fit {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+._flex-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+}
+._radius50 {
+    border-radius: 50%;
+}
+._radius15 {
+    border-radius: 15%;
+}
+._point-events-none {
+  pointer-events:none;
+}
+[class*=" ly-icon-"], [class^=ly-icon-] {
+    font-family: "lyFont" !important;
+    font-size: 0.32rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

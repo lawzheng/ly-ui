@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "lyFont";
+    src: url('iconfont.eot?t=1571139861358');
+    /* IE9 */
+    src: url('iconfont.eot?t=1571139861358#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAM8AAsAAAAAB3QAAALtAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDGgqCMIIIATYCJAMUCwwABCAFhG0HQht2BhEVlIlkXx7wMkRWbu+gChuHhvafrYCXYr1CBNXrGF18r+lEgu9z8Py3X3rfwGYyPwQqqwKkWDIrQhVFXAAQqo50VY9ncgFWlTkL7cJeccbNqgEChGC7jd2pw92JnnMUQuCQE4o414u0ZRxLS3P5BBI3jposybcDVGiLyfW+nObJiNkaNWFmlwABcv9zuLQJ1PP925bLHIuLBmAcUJaNtSmyEjoxvkV2EXfiIk5DAE9YIal9ePtsLQY0SQCZ1spvbSGAwRhphxBqWGmQO1icuqregNvR7+VAUQ4UVoNmdk7dR63fOdg51kQwwBEI5zsPwAIaKAQGpK8x0YsRA6fxiZCLfQ0S2DmOnJ0DbkL2+g9PoTEgIVBpDACVctLAzgFlQ2DnkA0FO0d69I0KZdHPKLUA+GKqFTGlYjOVgmXJaMDsVPMAzggnRI+kq8dnF+UepeR5VfqHj0XOppFvdaq5puU/DILr6WpS5coyr1mnGq/IHvTi1c14/Oi0Gy5Kv21kdYIn200/Rf/DL8Otz0/Sxr/OXbj/jGw9Df+6W5m2LaM6f6Xbg+s+KN+ZojlzuI+TJdAI7dUpoL5EeL3R2b8QQOCkPorD8frvAgPAz9efUiWDYVzSoQAs/OlCYJ3xxchojVtNBa7LkgycqACPByKQJ8m/eVSp4EoQHKkjXFFkZKBxZCINthAsASUQwlEBngIN6wOSzWDERAP5LkogJHgBijhegSbBW6TB/gVLmiMIkZAGj+K72Y5TN+nJLaMvGEFwBB0WORGzTOLyd1Tb1Oe8OCJ8I9c6DLZhldOPmCPPMafeKUeEgLjI4EE6D9O0gJKLDYZixCLl2jSp6UNGWGStiVsM+QSKgMAR0EKFHPHWYlL5/jukbKV83FHT4/yGWE13DmwGC4B8VOSgmnt5p7ajOIQggLBCBjxINpTiRAGUzcM2UEgY4hGx0pqpNCOowlhflX3jNsBDj9sKE5pRf61i6aVI0tmWvajY560WAAAA') format('woff2'), url('iconfont.woff?t=1571139861358') format('woff'), url('iconfont.ttf?t=1571139861358') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('iconfont.svg?t=1571139861358#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+
+/* .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 0.32rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+} */
+
+.ly-icon-right:before {
+    content: "\e7eb";
+}
+
+.ly-icon-left:before {
+    content: "\e7ec";
+}
+
+.ly-icon-up:before {
+    content: "\e7ed";
+}
+
+.ly-icon-down:before {
+    content: "\e7ee";
+}
