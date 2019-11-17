@@ -1,5 +1,6 @@
 <template>
-  <div class="_flex ly-ove" @touchmove.prevent v-show="showLoading">
+ <!-- v-show="showLoading" -->
+  <div class="_flex ly-ove" @touchmove.prevent>
     <img class="ly-circle-loading" :src=loadingImg alt="loadingImg">
   </div>
 </template>

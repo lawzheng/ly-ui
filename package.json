@@ -1,6 +1,6 @@
 {
   "name": "lyc-ui",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "private": false,
   "main": "lib/ly-ui.umd.min.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "async-validator": "^3.2.2",
     "core-js": "^2.6.5",
     "less": "^2.7.3",
     "less-loader": "^5.0.0",
@@ -38,7 +39,7 @@
       "eslint:recommended"
     ],
     "rules": {
-      "no-console":"off"
+      "no-console": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"
