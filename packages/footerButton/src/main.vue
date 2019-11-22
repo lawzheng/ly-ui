@@ -7,11 +7,12 @@
     >
       <ly-button
         :type="item.type"
+        :mode="item.mode"
         :color="item.color"
         :bgColor="item.bgColor"
         :disabled="item.disabled"
         :width="item.width"
-        @clickButton="item.fn ? item.fn() : ''"
+        @click="item.fn ? item.fn() : ''"
       >{{item.value}}</ly-button>
     </div>
   </footer>
@@ -24,6 +25,7 @@ export default {
   props: {
     btnList: {
       type: Array,
+      required: true,
       default: () => []
     }
   }
@@ -36,7 +38,7 @@ export default {
   height: 1.16rem;
   padding: .2rem .32rem;
   background-color: #fff;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   .ly-btn-item {

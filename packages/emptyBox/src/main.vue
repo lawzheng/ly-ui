@@ -2,15 +2,17 @@
   <div class="ly-empty-box _flex">
     <div class="ly-empty-content">
       <img :src="imgSrc" alt="" />
-      <div>{{ infoText }}</div>
+      <div class="ly-empty-content-text">{{ infoText }}</div>
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
 import common from "@/js/common.js";
-const IMGLIST = {
-  line: "http://image.greenplayer.cn/share/img/icon/mark_brand_goods_empty.png"
+const IMG_LIST = {
+  "page": "http://image.greenplayer.cn/share/img/icon/mark_brand_goods_empty.png",
+  "person": '//image.greenplayer.cn/share/img/club/minpage/icon_minpage_default_graph.svg'
 };
 
 export default {
@@ -28,12 +30,16 @@ export default {
     },
     imgType: {
       type: String,
-      default: "line"
+      default: "page",
+      validator: function(value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ["page", "person"].indexOf(value) !== -1;
+      }
     }
   },
   computed: {
     imgSrc() {
-      return IMGLIST[this.imgType];
+      return IMG_LIST[this.imgType];
     }
   },
   methods: {
@@ -52,6 +58,9 @@ export default {
     img {
       height: 1.2rem;
       margin-bottom: 0.2rem;
+    }
+    .ly-empty-content-text {
+      padding-bottom: 0.2rem;
     }
   }
 }

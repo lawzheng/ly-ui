@@ -1,27 +1,45 @@
 <template>
-  <div class="ly-form-item _flex-column _rel" :class="{'has-input': formItem.value}">
-    <label
-      class="input-title _flex flex-start"
-      :for="formItem.id"
-      :class="{'no-required': !formItem.required}"
-    >{{formItem.title}}</label>
-    <ly-input
-      ref="lyInput"
-      v-model="formItem.value"
+  <div
+    class="ly-form-item _flex-column _rel"
+    :class="{ 'has-input': formItem.value }"
+  >
+    <template v-if="formItem.label === 'input'">
+      <label
+        class="input-title _flex flex-start"
+        :for="formItem.id"
+        :class="{ 'no-required': !formItem.required }"
+        >{{ formItem.title }}</label
+      >
+      <ly-input
+        ref="lyInput"
+        v-model="formItem.value"
+        :type="formItem.type"
+        :id="formItem.id"
+        :maxlength="formItem.maxlength"
+        :disabled="formItem.disabled"
+        :readonly="formItem.readonly"
+        :showEye="formItem.showEye"
+        :clearable="formItem.clearable"
+        :placeholder="formItem.placeholder"
+        :showBottomBorder="true"
+        :showFocusBorder="false"
+      ></ly-input>
+      <p class="err-message">{{ errMessage }}</p>
+    </template>
+    <ly-button
+      v-else-if="formItem.label === 'button'"
       :type="formItem.type"
-      :id="formItem.id"
-      :maxlength="formItem.maxlength"
+      :mode="formItem.mode"
+      :color="formItem.color"
+      :bgColor="formItem.bgColor"
       :disabled="formItem.disabled"
-      :readonly="formItem.readonly"
-      :showEye="formItem.showEye"
-      :clearable="formItem.clearable"
-    ></ly-input>
-    <p class="err-message">{{errMessage}}</p>
+      :width="formItem.width"
+      @click="formItem.fn ? formItem.fn() : ''"
+    >{{ formItem.value }}</ly-button>
   </div>
 </template>
 
 <script>
-import common from "@/js/common.js";
 import Schema from "async-validator";
 
 export default {
@@ -39,19 +57,26 @@ export default {
       default: () => {
         return {};
       }
+    },
+    modelData: {
+      type: String,
+      default: ""
     }
   },
   mounted() {
-    this.$on("validate", this.validator);
+    // this.$on("validate", this.validator);
   },
   methods: {
-    del () {
-      this.$refs.lyInput.del()
+    del() {
+      if (this.formItem.label === 'input') {
+        this.$refs.lyInput.del();
+      }
     },
     inputFocus() {
       this.$emit("inputFocus");
     },
     validator() {
+      if (this.formItem.label !== 'input') return true
       const rules = this.formItem.rules;
       const value = this.formItem.value;
       const id = this.formItem.id;
@@ -65,9 +90,10 @@ export default {
           this.errStatus = true;
         } else {
           this.errMessage = "";
-          this.errStatus = "";
+          this.errStatus = false;
         }
       });
+      return !this.errStatus
     }
   }
 };
@@ -78,9 +104,9 @@ export default {
 .ly-form-item {
   width: 100%;
   height: 100%;
-  padding-top: 0.25rem;
-  &:first-child {
-    padding-top: 0;
+  padding: 0.2rem 0 0;
+  &:last-child {
+    padding-bottom: 0.2rem;
   }
   &:focus-within {
     .input-title {
@@ -115,7 +141,7 @@ export default {
     font-size: 0.28rem;
     color: #e64340;
     line-height: 1.2;
-    padding-top: 0.1rem;
+    padding: 0.05rem 0;
   }
 }
 </style>

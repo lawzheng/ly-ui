@@ -5,19 +5,23 @@
         {{ title }}
         <div v-if="+num > 0">（{{ num }}）</div>
       </div>
-      <div 
-        v-if="subTitle" 
-        class="ly-btn-text" 
-        @click.stop="clickBtn"
-        :style="{color: subTitleColor}"
+      <div
+        class="_flex"
+        @click.stop="clickSubTitle"
       >
-        {{ subTitle }}
+        <div 
+          v-if="subTitle" 
+          class="ly-btn-text" 
+          :style="{color: subTitleColor}"
+        >
+          {{ subTitle }}
+        </div>
+        <i
+          v-if="showArrow"
+          :style="{ color: subTitleColor }"
+          class="ly-icon-right"
+        ></i>
       </div>
-      <i
-        v-if="rightArrow"
-        :style="{ color: subTitleColor }"
-        class="ly-icon-right"
-      ></i>
     </div>
     <slot>
       <swiper 
@@ -27,7 +31,7 @@
           class="nav-item"
           v-for="(item, index) in list"
           :key="'swiperBox' + index"
-          @click="clickItem(index, item)"
+          @click="clickItem(item, index)"
         >
           <div class="nav-item-img">
             <div class="nav-item-img-content active">
@@ -76,7 +80,7 @@ export default {
       type: String,
       default: "#b1b2b3"
     },
-    rightArrow: {
+    showArrow: {
       type: Boolean,
       default: true
     },
@@ -98,11 +102,11 @@ export default {
       if (this.list.length === 0) return;
       this.$emit("clickTitle");
     },
-    clickItem(index, item) {
-      this.$emit("toPage", index, item);
+    clickItem(item, index) {
+      this.$emit("clickItem", item, index);
     },
-    clickBtn() {
-      this.$emit("clickBtn");
+    clickSubTitle() {
+      this.$emit("clickSubTitle");
     }
   }
 };

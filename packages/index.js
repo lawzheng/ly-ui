@@ -40,7 +40,7 @@ const components = [
 const install = function(Vue) {
     if (install.installed) return
     install.installed = true
-    // 遍历并注册全局组件
+        // 遍历并注册全局组件
     components.map(component => {
         Vue.component(component.name, component)
     })
@@ -50,7 +50,7 @@ const install = function(Vue) {
         error: require('@/img/logo_load_img.svg') //加载失败图片
     });
     Vue.prototype.$create = create
-    // Vue.prototype.showToast = create(Toast)
+        // Vue.prototype.showToast = create(Toast)
     const loading = create(Loading)
     Vue.prototype.showLoading = loading.append
     Vue.prototype.hideLoading = loading.remove

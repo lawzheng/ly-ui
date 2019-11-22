@@ -4,7 +4,10 @@
       <img v-if="lazyLoad" v-lazy="defaultImg" :key="defaultImg" />
       <img v-else :src="defaultImg" />
     </div>
-    <div class="content-title _flex-item _flex-column space-between">
+    <div
+      v-if="defaultTitle || defaultSubTitle"
+      class="content-title _flex-item _flex-column space-between"
+    >
       <div class="main-title _ellipsis">
         {{ defaultTitle }}
       </div>
@@ -12,13 +15,14 @@
         {{ defaultSubTitle }}
       </div>
     </div>
-    <div class="arrow" v-if="showArrowType !== 0">
-      <div class="ly-icon-right" v-if="showArrowType === 1"></div>
-      <div class="arrow-right-black" v-else-if="showArrowType === 2"></div>
-    </div>
+    <slot>
+    </slot>
     <div class="content-btn-list _flex" v-if="showBtn">
-      <ly-button class="content-btn" @clickButton="clickBtn(item, 2)">拒绝</ly-button>
-      <ly-button class="content-btn" @clickButton="clickBtn(item, 1)">同意</ly-button>
+      <ly-button class="content-btn" mode="line" @click="clickBtn(0)">拒绝</ly-button>
+      <ly-button class="content-btn" @click="clickBtn(1)">同意</ly-button>
+    </div>
+    <div class="arrow" v-if="showArrowType !== 0">
+      <div class="ly-icon-right"></div>
     </div>
   </div>
 </template>
@@ -38,23 +42,23 @@ export default {
     },
     imgCircle: {
       type: Boolean,
-      default: false
+      default: true
     },
     defaultImg: {
       type: String,
-      default: '//image.greenplayer.cn/share/img/icon_default_portrait.svg'
+      default: "//image.greenplayer.cn/share/img/icon_default_portrait.svg"
     },
     defaultTitle: {
       type: String,
-      default: ''
+      default: ""
     },
     defaultSubTitle: {
       type: String,
-      default: ''
+      default: ""
     },
     showArrowType: {
-      type: Number,
-      default: 0
+      type: Boolean,
+      default: false
     },
     showBtn: {
       type: Boolean,
@@ -62,11 +66,11 @@ export default {
     }
   },
   methods: {
-    clickItem () {
-      this.$emit('clickItem')
+    clickItem() {
+      this.$emit("clickItem", this.item);
     },
-    clickBtn (content, status) {
-      this.$emit('clickBtn', content, status)
+    clickBtn(status) {
+      this.$emit("clickBtn", this.item, status);
     }
   }
 };
@@ -77,7 +81,8 @@ export default {
 .ly-content-box {
   width: 100%;
   background-color: #fff;
-  padding: 0.15rem 0.32rem 0.21rem;
+  padding: 0.15rem 0.2rem 0.2rem;
+  font-size: 0.32rem;
   .content-img {
     width: 0.94rem;
     height: 0.94rem;
@@ -115,12 +120,8 @@ export default {
     .content-btn {
       width: 1.34rem;
       height: 0.64rem;
-      border-radius: 0.06rem;
-      border: solid 0.02rem #e3e3e4;
       &:first-child {
         margin-right: 0.16rem;
-        background-color: #fff!important;
-        color: #000!important;
       }
     }
     .content-btn-green {
@@ -128,6 +129,9 @@ export default {
       background-color: @mainColor;
       border: solid 0.02rem @mainColor;
     }
+  }
+  .arrow {
+    padding-left: 0.1rem;
   }
 }
 </style>
