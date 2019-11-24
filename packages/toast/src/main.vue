@@ -1,6 +1,6 @@
 <template>
   <transition name="fadein">
-    <div class="ly-toast-main _point-events-none" v-show="isToastShow" @click="hide">
+    <div class="ly-toast-main _point-events-none">
       <div class="toast" v-show="!toastType">
         <span class="toast-text">{{toastText}}</span>
       </div>
@@ -23,7 +23,24 @@ export default {
   data() {
     return {};
   },
-  props: {},
+  props: {
+    toastText: {
+      type: String,
+      default: ''
+    },
+    toastType: {
+      type: String,
+      default: '',
+      validator: function (value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['success', 'warning', 'error'].indexOf(value) !== -1
+      }
+    },
+    toastSubText: {
+      type: String,
+      default: ''
+    }
+  },
   computed: {
     toastImg() {
       switch (this.toastType) {
@@ -89,6 +106,7 @@ export default {
     .toast-text {
       max-width: 2rem;
       line-height: 1.2;
+      font-size: 0.28rem;
     }
     .toast-sub-text {
       max-width: 2rem;

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <ly-input
+
+    <!-- <ly-input
       v-model="formItem.value"
       :type="formItem.type"
       :id="formItem.id"
@@ -10,9 +11,9 @@
       :showEye="formItem.showEye"
       :clearable="formItem.clearable"
       :placeholder="formItem.placeholder"
-    ></ly-input>
+    ></ly-input> -->
 
-    <ly-form @formSubmit="formSubmit" :formList="formList" :model=model></ly-form>
+    <!-- <ly-form @formSubmit="formSubmit" :formList="formList" :model=model></ly-form> -->
 
     <!-- <ly-button @click="showLoadings" mode="" style="margin-top: 1rem">default</ly-button>
     <ly-button @click="showLoadings" mode="line" style="margin-top: 0.2rem">line</ly-button>
@@ -40,6 +41,10 @@
 
     <!-- <ly-swiper-box title="title" :list="list" :num="21" subTitle="subTitle" @clickSubTitle="f1"></ly-swiper-box> -->
     <!-- <ly-tab :navList="navList"></ly-tab> -->
+
+    
+    <!-- <ly-nav-tab v-model="curNav" :mode="1" :navList="navList"></ly-nav-tab> -->
+    <ly-button @click="showT">haha</ly-button>
   </div>
 </template>
 
@@ -48,6 +53,8 @@ export default {
   name: "app",
   data() {
     return {
+      curNav: 0,
+      navList: ['tab1', 'tab2', 'tab3'],
       xx: "",
       model: {
         username: "",
@@ -229,6 +236,9 @@ export default {
     // console.log(this.showLoading)
   },
   methods: {
+    showT () {
+      this.showToast('1')
+    },
     showLoadings() {
       this.showLoading();
       setTimeout(() => {
@@ -254,7 +264,7 @@ export default {
   position: absolute;
   top: 0;
   bottom: 0;
-  padding: 0.32rem;
+  /* padding: 0.32rem; */
   background-color: #f6f6f6;
 }
 </style>

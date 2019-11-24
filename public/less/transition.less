@@ -1,0 +1,79 @@
+.fadein-enter-active, .fadein-leave-active {
+  transition: all .2s;
+}
+.fadein-enter, .fadein-leave-active {
+  opacity: 0;
+}
+.scalein-enter-active, .scalein-leave-active {
+  transition: all .2s;
+}
+.scalein-enter, .scalein-leave-active {
+  transform: scale(0.5);
+  opacity: 0.5;
+}
+.scaledown-enter-active, .scaledown-leave-active {
+  transition: all .2s;
+  transform-origin: 0 0;
+}
+.scaledown-enter, .scaledown-leave-active {
+  transform: scaleY(0);
+  transform-origin: 0 0;
+}
+.slideleft-enter-active, .slideleft-leave-active {
+  transition: all .2s;
+}
+.slideleft-enter, .slideleft-leave-active {
+  transform: translateX(100%);
+  opacity: 0.5;
+}
+.slideright-enter-active, .slideright-leave-active {
+  transition: all .2s;
+}
+.slideright-enter, .slideright-leave-active {
+  transform: translateX(-100%);
+  opacity: 0.5;
+}
+.slidetop-enter-active, .slidetop-leave-active {
+  transition: all .2s;
+}
+.slidetop-enter, .slidetop-leave-active {
+  transform: translateY(-100%);
+  opacity: 0.5;
+}
+.slidebottom-enter-active, .slidebottom-leave-active {
+  transition: all .2s;
+}
+.slidebottom-enter, .slidebottom-leave-active {
+  transform: translateY(100%);
+  opacity: 0.5;
+}
+.move1-enter-active, .move1-leave-active {
+  transition: all .2s;
+}
+.move1-enter, .move1-leave-active {
+  transition: all .2s;
+  transform: scale(0.5) translate(0, 0);
+}
+.list-enter-active,
+.list-leave-active {
+  animation: bounceOutLeft 0.8s forwards;
+}
+.list-enter,
+.list-leave-to {
+  animation: bounceOutLeft 0.8s forwards;
+}
+.list-move {
+  transition: transform 1s;
+}
+.slidein-enter-active, .slidein-leave-active {
+  transition: all .2s
+}
+.slidein-enter, .slidein-leave-active {
+  opacity: 0.5;
+}
+.foldup-enter-active, .foldup-leave-active {
+  transition: all .2s
+}
+.foldup-enter, .foldup-leave-active {
+  height: 0!important;
+}

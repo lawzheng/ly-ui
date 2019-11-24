@@ -24,7 +24,6 @@ import common from "@/js/common.js";
 
 export default {
   name: "ly-button",
-  baseName: "Button",
   data() {
     return {
       disabledColor: common.disabledColor
