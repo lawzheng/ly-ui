@@ -5,7 +5,11 @@ import VueLazyload from 'vue-lazyload'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
+import picker from 'vue-3d-picker'
+
 import create from '@/js/create'
+
+import utils from '@/js/utils'
 
 // 导入单个组件
 import Button from "./button/index"
@@ -20,6 +24,7 @@ import Form from "./form/index"
 import FormItem from "./formItem/index"
 import Toast from "./toast/index"
 import NavTab from "./navTab/index"
+import AreaPicker from "./areaPicker/index"
 
 // 以数组的结构保存组件，便于遍历
 const components = [
@@ -34,14 +39,15 @@ const components = [
     Form,
     FormItem,
     Toast,
-    NavTab
+    NavTab,
+    AreaPicker
 ]
 
 // 定义 install 方法
-const install = function (Vue) {
+const install = function(Vue) {
     if (install.installed) return
     install.installed = true
-    // 遍历并注册全局组件
+        // 遍历并注册全局组件
     components.map(component => {
         Vue.component(component.name, component)
     })
@@ -50,16 +56,18 @@ const install = function (Vue) {
 }
 
 // 引入插件
-const vender = function (Vue) {
+const vender = function(Vue) {
+    Vue.prototype.utils = utils
     Vue.use(VueAwesomeSwiper)
     Vue.use(VueLazyload, {
         loading: require('@/img/logo_load_img.svg'), //加载中图片，一定要有，不然会一直重复加载占位图
         error: require('@/img/logo_load_img.svg') //加载失败图片
     });
+    Vue.component('vuePicker', picker)
 }
 
 // create components
-const createList = function (Vue) {
+const createList = function(Vue) {
     Vue.prototype.$create = create
 
     // loading
@@ -68,12 +76,13 @@ const createList = function (Vue) {
     Vue.prototype.hideLoading = loading.remove
 
     // toast
-    Vue.prototype.showToast = function (props) {
+    Vue.prototype.showToast = function(props) {
         if (!props) return
         let propsList = {}
         let toastTime = 2000
         if (typeof props === 'string') {
             propsList.toastText = props
+            propsList.toastType = ''
         } else if (typeof props === 'object') {
             if (Object.keys(props).length === 0) return
             propsList = props
@@ -86,6 +95,20 @@ const createList = function (Vue) {
         setTimeout(() => {
             toast.remove()
         }, toastTime)
+    }
+
+    // areaPicker
+    Vue.prototype.showAreaPicker = function(props) {
+        if (!Vue.prototype.$AreaPicker) {
+            const CreateAreaPicker = create(AreaPicker, props)
+            CreateAreaPicker.append()
+            CreateAreaPicker.showContent = true
+            CreateAreaPicker.visible = true
+            Vue.prototype.$AreaPicker = CreateAreaPicker
+        } else {
+            Vue.prototype.$AreaPicker.showContent = true
+            Vue.prototype.$AreaPicker.visible = true
+        }
     }
 }
 

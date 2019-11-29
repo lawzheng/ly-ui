@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <!-- <ly-input
+    <ly-input
       v-model="formItem.value"
       :type="formItem.type"
       :id="formItem.id"
@@ -11,20 +11,20 @@
       :showEye="formItem.showEye"
       :clearable="formItem.clearable"
       :placeholder="formItem.placeholder"
-    ></ly-input> -->
+    ></ly-input>
 
-    <!-- <ly-form @formSubmit="formSubmit" :formList="formList" :model=model></ly-form> -->
+    <ly-form @formSubmit="formSubmit" :formList="formList" :model=model></ly-form>
 
-    <!-- <ly-button @click="showLoadings" mode="" style="margin-top: 1rem">default</ly-button>
+    <ly-button @click="showLoadings" mode="" style="margin-top: 1rem">default</ly-button>
     <ly-button @click="showLoadings" mode="line" style="margin-top: 0.2rem">line</ly-button>
     <ly-button @click="showLoadings" mode="light" style="margin-top: 0.2rem">light</ly-button>
-    <ly-button @click="showLoadings" :disabled="true" style="margin-top: 0.2rem">disabled</ly-button> -->
+    <ly-button @click="showLoadings" :disabled="true" style="margin-top: 0.2rem">disabled</ly-button>
 
-    <!-- <ly-footer-button :btnList="btnList"></ly-footer-button> -->
+    <ly-footer-button :btnList="btnList"></ly-footer-button>
 
-    <!-- <ly-loading :showLoading="showLoading"></ly-loading> -->
+    <ly-loading :showLoading="showLoading"></ly-loading>
 
-    <!-- <ly-list-item
+    <ly-list-item
       defaultTitle="defaultTitle"
       defaultSubTitle="defaultSubTitle"
       :showArrowType="true"
@@ -35,16 +35,21 @@
       :showArrowType="true" 
       :showBtn="true" 
       style="margin-top: 0.2rem"
-    >slot</ly-list-item> -->
+    >slot</ly-list-item>
 
-    <!-- <ly-empty-box>slot</ly-empty-box> -->
+    <ly-empty-box>slot</ly-empty-box>
 
-    <!-- <ly-swiper-box title="title" :list="list" :num="21" subTitle="subTitle" @clickSubTitle="f1"></ly-swiper-box> -->
-    <!-- <ly-tab :navList="navList"></ly-tab> -->
+    <ly-swiper-box title="title" :list="list" :num="21" subTitle="subTitle" @clickSubTitle="f1"></ly-swiper-box>
+    <ly-tab :navList="navList"></ly-tab>
 
     
-    <!-- <ly-nav-tab v-model="curNav" :mode="1" :navList="navList"></ly-nav-tab> -->
+    <ly-nav-tab v-model="curNav" :mode="1" :navList="navList"></ly-nav-tab>
     <ly-button @click="showT">haha</ly-button>
+    <ly-button @click="showA">haha</ly-button>
+
+    {{areaData.areaName}}
+    {{areaData.areaId}}
+    {{areaData.shortName}}
   </div>
 </template>
 
@@ -53,6 +58,11 @@ export default {
   name: "app",
   data() {
     return {
+      areaData: {
+        areaName: '',
+        areaId: '',
+        shortName: ''
+      },
       curNav: 0,
       navList: ['tab1', 'tab2', 'tab3'],
       xx: "",
@@ -236,8 +246,17 @@ export default {
     // console.log(this.showLoading)
   },
   methods: {
+    showA () {
+      this.showAreaPicker({
+        areaData: this.areaData
+      })
+    },
     showT () {
-      this.showToast('1')
+      this.showToast({
+        type: 'success',
+        text: '1',
+        subText: '2'
+      })
     },
     showLoadings() {
       this.showLoading();

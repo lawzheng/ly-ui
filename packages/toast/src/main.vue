@@ -1,14 +1,14 @@
 <template>
   <transition name="fadein">
     <div class="ly-toast-main _point-events-none">
-      <div class="toast" v-show="!toastType">
-        <span class="toast-text">{{toastText}}</span>
+      <div class="toast" v-if="!type">
+        <span class="toast-text">{{text}}</span>
       </div>
-      <div class="toast-type _flex" v-show="toastType">
+      <div class="toast-type _flex" v-if="type">
         <div class="toast-box _flex-column">
           <img :src="toastImg" alt class="toast-img" />
-          <span class="toast-text _ellipsis2">{{toastText}}</span>
-          <span class="toast-sub-text _ellipsis2" v-show="toastSubText">{{toastSubText}}</span>
+          <span class="toast-text _ellipsis2">{{text}}</span>
+          <span class="toast-sub-text _ellipsis2" v-if="subText">{{subText}}</span>
         </div>
       </div>
     </div>
@@ -16,40 +16,40 @@
 </template>
 
 <script>
-import common from "@/js/common.js";
-
 export default {
   name: "ly-toast",
   data() {
     return {};
   },
   props: {
-    toastText: {
+    text: {
       type: String,
       default: ''
     },
-    toastType: {
+    type: {
       type: String,
       default: '',
       validator: function (value) {
         // 这个值必须匹配下列字符串中的一个
-        return ['success', 'warning', 'error'].indexOf(value) !== -1
+        return ['', 'success', 'warning', 'error'].indexOf(value) !== -1
       }
     },
-    toastSubText: {
+    subText: {
       type: String,
       default: ''
     }
   },
   computed: {
     toastImg() {
-      switch (this.toastType) {
+      switch (this.type) {
         case "success":
           return "//image.greenplayer.cn/share/img/icon/icon_success.svg";
         case "error":
           return "//image.greenplayer.cn/share/img/icon/icon_error.svg";
         case "warning":
           return "//image.greenplayer.cn/share/img/icon/icon_warning.svg";
+        default:
+          return "";
       }
     }
   },

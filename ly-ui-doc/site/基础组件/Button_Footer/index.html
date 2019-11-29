@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Button - ly-ui</title>
+  <title>Button Footer - ly-ui</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Button";
-    var mkdocs_page_input_path = "\u57fa\u7840\u7ec4\u4ef6\\Button.md";
+    var mkdocs_page_name = "Button Footer";
+    var mkdocs_page_input_path = "\u57fa\u7840\u7ec4\u4ef6\\Button_Footer.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -57,9 +57,13 @@
 		
     <span class="caption-text">基础组件</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Button/">Button</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Button</a>
+    <a class="current" href="./">Button Footer</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#_1">示例</a></li>
@@ -72,10 +76,6 @@
     
 
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Button_Footer/">Button Footer</a>
                 </li>
                 <li class="">
                     
@@ -133,7 +133,7 @@
         
       
     
-    <li>Button</li>
+    <li>Button Footer</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -143,26 +143,29 @@
           <div role="main">
             <div class="section">
               
-                <p>按钮，提供了各种类型、样子、状态。 </p>
+                <p>底部按钮，直接fixed在底部，传入按钮数组控制。 </p>
 <h4 id="_1">示例</h4>
-<ul>
-<li>按钮类型</li>
-</ul>
-<p>默认类型为 <code>button</code>，还可设置为 <code>submit</code> 用于表单中</p>
-<p><code>&lt;ly-button&gt;Button&lt;/ly-button&gt;
-  &lt;ly-button type="submit"&gt;Submit Button&lt;/ly-button&gt;</code></p>
-<ul>
-<li>按钮状态</li>
-</ul>
-<p>默认正常，可设置禁用状态</p>
-<p><code>&lt;ly-button :disabled="true"&gt;Disabled Button&lt;/ly-button&gt;</code></p>
-<ul>
-<li>样式</li>
-</ul>
-<p>可以通过设置 <code>mode</code> 属性来改变按钮样式</p>
-<p><code>&lt;ly-button :mode ="light"&gt;Light Button&lt;/ly-button&gt;
-  &lt;ly-button :mode ="line"&gt;Light Button&lt;/ly-button&gt;</code></p>
-<p><img alt="button" src="../../img/button.png" /></p>
+<pre><code>&lt;ly-footer-button :btnList=&quot;btnList&quot;&gt;&lt;/ly-footer-button&gt;
+</code></pre>
+
+<pre><code>btnList: [
+        {
+          type: &quot;button&quot;,
+          value: &quot;左按钮&quot;,
+          fn: this.f1,
+          disabled: false
+        },
+        {
+          type: &quot;button&quot;,
+          bgColor: &quot;red&quot;,
+          value: &quot;右按钮&quot;,
+          fn: this.f2,
+          width: &quot;2rem&quot;
+        }
+]
+</code></pre>
+
+<p><img alt="button" src="../../img/footerButton.png" /></p>
 <h4 id="props">Props 配置</h4>
 <table>
 <thead>
@@ -176,39 +179,18 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">type</td>
-<td align="left">按钮类型</td>
-<td align="left">String</td>
-<td align="left">button/submit</td>
-<td align="left">button</td>
+<td align="left">btnList(必传)</td>
+<td align="left">按钮列表</td>
+<td align="left">Array</td>
+<td align="left">[]</td>
+<td align="left"></td>
 </tr>
 <tr>
-<td align="left">disabled</td>
-<td align="left">禁用状态</td>
-<td align="left">Boolean</td>
-<td align="left">true/false</td>
-<td align="left">false</td>
-</tr>
-<tr>
-<td align="left">mode</td>
-<td align="left">按钮样式</td>
-<td align="left">String</td>
-<td align="left">light/line</td>
-<td align="left">""</td>
-</tr>
-<tr>
-<td align="left">bgColor</td>
-<td align="left">背景色</td>
-<td align="left">String</td>
-<td align="left">“#666”等</td>
-<td align="left">"#3db657"</td>
-</tr>
-<tr>
-<td align="left">border、color、width</td>
-<td align="left">内联样式</td>
-<td align="left">String</td>
-<td align="left">css代码</td>
-<td align="left">“”</td>
+<td align="left">数组中对象值可传button的所有值，fn为回调函数，value为按钮值</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
@@ -223,7 +205,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">click</td>
+<td align="left">fn</td>
 <td align="left">点击按钮后触发此事件，如果禁用状态，则不触发</td>
 <td align="left"></td>
 </tr>
@@ -236,10 +218,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Button_Footer/" class="btn btn-neutral float-right" title="Button Footer">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../EmptyBox/" class="btn btn-neutral float-right" title="EmptyBox">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../概览/" class="btn btn-neutral" title="概览"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Button/" class="btn btn-neutral" title="Button"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -265,10 +247,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../概览/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Button/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../Button_Footer/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../EmptyBox/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

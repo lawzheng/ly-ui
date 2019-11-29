@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Button - ly-ui</title>
+  <title>SwiperBox - ly-ui</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Button";
-    var mkdocs_page_input_path = "\u8868\u5355\\Button.md";
+    var mkdocs_page_name = "SwiperBox";
+    var mkdocs_page_input_path = "\u57fa\u7840\u7ec4\u4ef6\\SwiperBox.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -59,22 +59,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../基础组件/Button/">Button</a>
+    <a class="" href="../Button/">Button</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../基础组件/EmptyBox/">EmptyBox</a>
+    <a class="" href="../Button_Footer/">Button Footer</a>
                 </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">表单</span>
-    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../EmptyBox/">EmptyBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ListItem/">ListItem</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Button</a>
+    <a class="current" href="./">SwiperBox</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#_1">示例</a></li>
@@ -87,6 +88,21 @@
     
 
     </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">表单</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../表单/Form/">Form</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../表单/Input/">Input</a>
                 </li>
     </ul>
 	    </li>
@@ -113,11 +129,11 @@
     
       
         
-          <li>表单 &raquo;</li>
+          <li>基础组件 &raquo;</li>
         
       
     
-    <li>Button</li>
+    <li>SwiperBox</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -127,25 +143,13 @@
           <div role="main">
             <div class="section">
               
-                <p>按钮，提供了各种类型、样子、状态以及图标。 </p>
+                <p>头部加滑动列表组件</p>
 <h4 id="_1">示例</h4>
-<ul>
-<li>按钮类型</li>
-</ul>
-<p>默认类型为 <code>button</code>，还可设置为 <code>submit</code> 用于表单中</p>
-<p><code>&lt;ly-button&gt;Button&lt;/ly-button&gt;
-  &lt;ly-button type="submit"&gt;Submit Button&lt;/ly-button&gt;</code></p>
-<ul>
-<li>按钮状态</li>
-</ul>
-<p>默认正常，可设置禁用状态</p>
-<p><code>&lt;ly-button :disabled="true"&gt;Disabled Button&lt;/ly-button&gt;</code></p>
-<ul>
-<li>样式</li>
-</ul>
-<p>可以通过设置 <code>mode</code> 属性来改变按钮样式</p>
-<p><code>&lt;ly-button :mode ="light"&gt;Light Button&lt;/ly-button&gt;
-  &lt;ly-button :mode ="line"&gt;Light Button&lt;/ly-button&gt;</code></p>
+<pre><code>&lt;ly-swiper-box title=&quot;title&quot; :list=&quot;list&quot; :num=&quot;21&quot; subTitle=&quot;subTitle&quot; @loadMore=&quot;f1&quot;&gt;&lt;/ly-swiper-box&gt;
+</code></pre>
+
+<p><img alt="button" src="../../img/swiperBox.png" /></p>
+<p>滑动区域为slot</p>
 <h4 id="props">Props 配置</h4>
 <table>
 <thead>
@@ -159,39 +163,83 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">type</td>
-<td align="left">按钮类型</td>
-<td align="left">String</td>
-<td align="left">button/submit</td>
-<td align="left">button</td>
+<td align="left">list</td>
+<td align="left">滑动区数据</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">[]</td>
 </tr>
 <tr>
-<td align="left">disabled</td>
-<td align="left">禁用状态</td>
-<td align="left">Boolean</td>
-<td align="left">true/false</td>
-<td align="left">false</td>
+<td align="left">swiperOption</td>
+<td align="left">swiper的选项，参照官方</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr>
-<td align="left">mode</td>
-<td align="left">按钮样式</td>
-<td align="left">String</td>
-<td align="left">light/line</td>
+<td align="left">num</td>
+<td align="left">数量，有值才显示</td>
+<td align="left">未限制</td>
+<td align="left">String,Number</td>
 <td align="left">""</td>
 </tr>
 <tr>
-<td align="left">bgColor</td>
-<td align="left">背景色</td>
+<td align="left">title</td>
+<td align="left">默认标题</td>
 <td align="left">String</td>
-<td align="left">“#666”等</td>
-<td align="left">"#3db657"</td>
+<td align="left"></td>
+<td align="left">无</td>
 </tr>
 <tr>
-<td align="left">border、color、width</td>
-<td align="left">内联样式</td>
+<td align="left">subTitle</td>
+<td align="left">默认副标题</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">subTitleColor</td>
+<td align="left">默认副标题字体颜色</td>
 <td align="left">String</td>
 <td align="left">css代码</td>
-<td align="left">“”</td>
+<td align="left">"#b1b2b3"</td>
+</tr>
+<tr>
+<td align="left">showArrow</td>
+<td align="left">显示右箭头</td>
+<td align="left">Boolean</td>
+<td align="left">true/false</td>
+<td align="left">true</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>list</code> 子配置项</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">可选值</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">img</td>
+<td align="left">图片</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">文字</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
@@ -206,9 +254,19 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">click</td>
-<td align="left">点击按钮后触发此事件，如果禁用状态，则不触发</td>
+<td align="left">clickTitle</td>
+<td align="left">点击头部区域</td>
 <td align="left"></td>
+</tr>
+<tr>
+<td align="left">clickSubTitle</td>
+<td align="left">点击副标题</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">clickItem</td>
+<td align="left">点击列表中的单个</td>
+<td align="left">item, index</td>
 </tr>
 </tbody>
 </table>
@@ -219,8 +277,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../../表单/Form/" class="btn btn-neutral float-right" title="Form">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../../基础组件/EmptyBox/" class="btn btn-neutral" title="EmptyBox"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../ListItem/" class="btn btn-neutral" title="ListItem"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -246,8 +306,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../基础组件/EmptyBox/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ListItem/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../../表单/Form/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
